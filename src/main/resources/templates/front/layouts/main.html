@@ -8,6 +8,7 @@
     <meta name="_csrf" th:content="${_csrf.token}">
     <meta name="_csrf_header" th:content="${_csrf.headerName}">
     <meta name="rootUrl" th:content="@{/}">
+    <meta th:if="${@memberUtil.isLogin()}" name="user" th:content="${profile.email}">
 
     <title>
         <th:block th:if="${pageTitle != null}"
@@ -34,6 +35,7 @@
 
     <th:block layout:fragment="addCss"></th:block>
 
+    <script th:src="@{/common/js/message.js?v={v}(v=*{jsVersion})}"></script>
     <script th:src="@{/common/js/common.js?v={v}(v=*{jsVersion})}"></script>
 
     <th:block th:if="${addCommonScript != null}">

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{front/layouts/main}">
-<main layout:fragment="content">
+      layout:decorate="~{front/layouts/mypage}">
+<section layout:fragment="content">
     <h1 th:text="#{쪽지함}"></h1>
+
     <a th:href="@{/message}" th:text="#{쪽지_보내기}"></a>
+
     <form name="frmSearch" method="GET" th:action="@{/message/list}" autocomplete="off" th:object="${messageSearch}">
+
         <div class="search-box">
             <select name="sopt" th:field="*{sopt}">
                 <option value="SUBJECT" th:text="#{제목}"></option>
@@ -14,6 +17,8 @@
             <input type="text" name="skey" th:field="*{skey}" th:placeholder="#{검색어를_입력하세요.}">
             <button type="submit" th:text="#{조회하기}"></button>
         </div>
+
+
         <div class="tab-group">
             <label class="tab">
                 <input type="radio" name="mode" value="receive" th:field="*{mode}" onclick="frmSearch.submit()">
@@ -41,5 +46,5 @@
     </ul>
 
     <th:block th:replace="~{common/_pagination::pagination}"></th:block>
-</main>
+</section>
 </html>
