@@ -34,10 +34,12 @@ function callbackFileUpload(files) {
 
         el.innerHTML = `<img src='${file.thumbUrl}&width=250&height=350'>`;
     }
-    //회원정보 갱신
+
+    // 회원정보 갱신
     const { ajaxLoad } = commonLib;
     ajaxLoad("/mypage/refresh");
 }
+
 /**
 * 주소 선택 후속 처리
 *
