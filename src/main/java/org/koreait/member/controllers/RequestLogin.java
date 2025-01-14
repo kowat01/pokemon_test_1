@@ -20,3 +20,4 @@ public class RequestLogin implements Serializable {
 
     private String kakaoLoginUrl;
 }
+
