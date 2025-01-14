@@ -55,7 +55,7 @@ public class Message extends BaseEntity {
     private boolean received;
 
     @Transient
-    private boolean deletable;// 삭제 가능 여부
+    private boolean deletable; // 삭제 가능 여부
 
     private boolean deletedBySender; // 보내는 쪽에서 쪽지를 삭제한 경우
 
