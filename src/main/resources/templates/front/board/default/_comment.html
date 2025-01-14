@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <nav th:fragment="category" th:if="${categories !=null && !categories.isEmpty()}"
-         class="category-tab">
-        <a th:href="@{/board/list/{bid}(bid=${board.bid})}" th:text="#{전체}"></a>
-        <a th:each="category : ${categories}"
-           th:href="@{/board/list/{bid}}"
-    </nav>
+<th:block th:fragment="comment">
+    <form id="commentForm" name="frmSave" method="POST" th:action="@{/board/comment}" autocomplete="off" target="ifrmProcess">
+        <div class="commenter">
 
+        </div>
+    </form>
+</th:block>
 </html>
