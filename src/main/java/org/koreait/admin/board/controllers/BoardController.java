@@ -57,12 +57,12 @@ public class BoardController implements SubMenus {
         return "admin/board/list";
     }
 
-    @RequestMapping(path="/list",method = {RequestMethod.PATCH, RequestMethod.DELETE})
+    @RequestMapping(path="/list", method={RequestMethod.PATCH, RequestMethod.DELETE})
     public String listPs(@RequestParam(name="chk", required = false) List<Integer> chks, Model model) {
 
         configUpdateService.process(chks, request.getMethod().equalsIgnoreCase("DELETE") ? "delete" : "edit");
 
-        model.addAttribute("script","parent.location.reload();");
+        model.addAttribute("script", "parent.location.reload();");
         return "common/_execute_script";
     }
 
@@ -77,6 +77,7 @@ public class BoardController implements SubMenus {
         commonProcess("add", model);
 
         form.setSkin("default");
+        form.setLocationAfterWriting("list");
         form.setListAuthority(Authority.ALL);
         form.setViewAuthority(Authority.ALL);
         form.setWriteAuthority(Authority.ALL);
@@ -158,7 +159,7 @@ public class BoardController implements SubMenus {
         } else if (mode.equals("posts")) {
             pageTitle = "게시글 관리";
         }
-
+        
         pageTitle += " - 게시판 관리";
 
         model.addAttribute("pageTitle", pageTitle);

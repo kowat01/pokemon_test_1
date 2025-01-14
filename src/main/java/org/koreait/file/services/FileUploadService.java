@@ -82,7 +82,6 @@ public class FileUploadService {
                 uploadedItems.add(item);
 
             } catch (IOException e) {
-                e.printStackTrace();
                 // 파일 업로드 실패 -> DB 저장된 데이터를 삭제
                 fileInfoRepository.delete(item);
                 fileInfoRepository.flush();

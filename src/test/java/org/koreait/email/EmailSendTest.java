@@ -37,7 +37,7 @@ public class EmailSendTest {
          */
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, false, "UTF-8");
-        helper.setTo("kwat0112@gmail.com");
+        helper.setTo("yonggyo00@kakao.com");
         helper.setSubject("테스트 이메일 제목...");
         helper.setText("테스트 이메일 내용...");
         javaMailSender.send(message);
@@ -56,9 +56,9 @@ public class EmailSendTest {
     @Test
     void test3() {
         RequestEmail form = new RequestEmail();
-        form.setTo(List.of("kwat0112@gmail.com", "kwat0112@gmail.com"));
-        form.setCc(List.of("kwat0112@gmail.com"));
-        form.setBcc(List.of("kwat0112@gmail.com"));
+        form.setTo(List.of("yonggyo00@kakao.com", "yonggyo00@kakao.com"));
+        form.setCc(List.of("yonggyo1981@gmail.com"));
+        form.setBcc(List.of("yonggyo1981@gmail.com"));
         form.setSubject("테스트 이메일 제목...");
         form.setContent("<h1>테스트 이메일 내용...</h1>");
 
