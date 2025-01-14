@@ -10,13 +10,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-@ActiveProfiles({"default","test"})
+@ActiveProfiles({"default", "test"})
 public class MockMemberTest {
+
     @Autowired
     private MemberUtil memberUtil;
 
     @Test
-    @MockMember(authority = {Authority.USER,Authority.ADMIN})
+    @MockMember(authority = {Authority.USER, Authority.ADMIN})
     void test1() {
         Member member = memberUtil.getMember();
         System.out.println(member);
