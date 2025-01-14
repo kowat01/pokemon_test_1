@@ -34,7 +34,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @SessionAttributes({"requestAgree", "requestLogin", "authCodeVerified", "socialChannel", "socialToken"})
 public class MemberController {
-
+    
     private final Utils utils;
     private final JoinValidator joinValidator; // 회원 가입 검증
     private final MemberUpdateService updateService; // 회원 가입 처리
@@ -51,7 +51,7 @@ public class MemberController {
     public RequestLogin requestLogin() {
         return new RequestLogin();
     }
-
+    
     // 이메일 인증 여부
     @ModelAttribute("authCodeVerified")
     public boolean authCodeVerified() {
@@ -184,7 +184,7 @@ public class MemberController {
 
     /**
      * 공통 처리 부분
-     *
+     * 
      * @param mode
      * @param model
      */
@@ -224,7 +224,7 @@ public class MemberController {
 
         // front 스크립트
         model.addAttribute("addScript", addScript);
-
+        
         // 소셜 로그인 설정
         model.addAttribute("socialConfig", socialConfig);
     }
