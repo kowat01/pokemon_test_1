@@ -5,6 +5,9 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.koreait.file.entities.FileInfo;
 import org.koreait.file.services.FileInfoService;
+import org.koreait.global.constants.Device;
+import org.koreait.global.entities.SiteConfig;
+import org.koreait.global.services.CodeValueService;
 import org.koreait.member.libs.MemberUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -24,6 +27,7 @@ public class Utils {
     private final MessageSource messageSource;
     private final FileInfoService fileInfoService;
     private final MemberUtil memberUtil;
+    private final CodeValueService codeValueService;
 
     public boolean isMobile() {
 
@@ -42,7 +46,13 @@ public class Utils {
      * @return
      */
     public String tpl(String path) {
+        SiteConfig config = codeValueService.get("siteConfig", SiteConfig.class);
+
         String prefix = isMobile() ? "mobile" : "front";
+
+        if (config != null && config.getDevice() != Device.ALL) {
+            prefix = config.getDevice() == Device.MOBILE ? "mobile" : "front";
+        }
 
         return String.format("%s/%s", prefix, path);
     }
@@ -61,13 +71,13 @@ public class Utils {
 
     public List<String> getMessages(String[] codes) {
 
-            return Arrays.stream(codes).map(c -> {
-                try {
-                    return getMessage(c);
-                } catch (Exception e) {
-                    return "";
-                }
-            }).filter(s -> !s.isBlank()).toList();
+        return Arrays.stream(codes).map(c -> {
+            try {
+                return getMessage(c);
+            } catch (Exception e) {
+                return "";
+            }
+        }).filter(s -> !s.isBlank()).toList();
 
     }
 
@@ -197,7 +207,7 @@ public class Utils {
      */
     public String nl2br(String text) {
         return text == null ? "" : text.replaceAll("\\r", "")
-                                        .replaceAll("\\n", "<br>");
+                .replaceAll("\\n", "<br>");
     }
 
     public String popup(String url, int width, int height) {
